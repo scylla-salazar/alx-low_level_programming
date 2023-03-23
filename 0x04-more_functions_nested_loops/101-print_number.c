@@ -1,71 +1,48 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
- * exponent - x to the power of y
- * @x: base number
- * @y: exponent
- * Description: calcuates x^y
- * Return: x^y
- *
- **/
-
-int exponent(int x, int y)
+ * print_number - prints an integer
+ * @n: random integer
+ * Return: void
+ */
+void print_number(int n)
 {
-	int power;
+	char ld, cr;
+	int r;
+	int ct = 0;
 
-	power = x;
-
-	if (x == 0)
-		return (0);
-	if (y == 0)
-		return (1);
-
-	while (y >= 2)
+	if (n < 0)
 	{
-		power  = power * x;
-		y--;
-	}
-	return (power);
-}
-
-/**
- * print_number - print an int using only _putchar
- * @number: int to be printed by function
- *
- * Return: nothing
- **/
-
-void print_number(int number)
-{
-	int size, digit;
-	long counter, sign;
-
-	sign = 1;
-	digit = 0;
-	size = 1;
-	counter = number;
-
-	if (number < 0)
-	{
-		_putchar('-');
-		sign = -1;
-		counter *= sign;
+		_putchar ('-');
+		ld = (char)('0' - (n % 10));
+		n = n / -10;
 	}
 
-	for (; counter >= 10; size++)
+	else
 	{
-		counter = counter / 10;
+		ld = (char)((n % 10) + '0');
+		n = n / 10;
 	}
 
-	counter = sign * (long)number;
-
-	while (size >= 2)
+	r = 0;
+	while (n > 0)
 	{
-		digit = (counter / exponent(10, size - 1));
-		_putchar(digit + '0');
-		counter = counter % exponent(10, size - 1);
-		size--;
+		r = r * 10 + (n % 10);
+		n = n / 10;
+		ct++;
 	}
-	_putchar(counter % 10 + '0');
+
+	while (r > 0)
+	{
+		cr = (char)((r % 10) + '0');
+		_putchar(cr);
+		r = r / 10;
+		ct--;
+	}
+	while (ct != 0)
+	{
+		_putchar('0');
+		ct--;
+	}
+	_putchar(ld);
 }
