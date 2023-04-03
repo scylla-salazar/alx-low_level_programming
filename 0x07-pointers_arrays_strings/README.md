@@ -1,1 +1,1 @@
-This contains ALX 0x07-pointers_arrays_strings projects
+This is a readme file
