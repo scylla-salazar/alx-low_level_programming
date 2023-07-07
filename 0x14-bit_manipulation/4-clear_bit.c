@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 
 /**
  * clear_bit - A function that sets the value of a bit to 0.
@@ -8,6 +8,7 @@ include "main.h"
  *
  * Return: 1 if it works; -1 if it doesn't work.
  */
+
 int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned int a;
